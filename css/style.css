@@ -1,0 +1,74 @@
+html {
+    background: rgb(220,220,230);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+body {
+    font-family:Helvetica;
+    margin:0;
+    padding:0;}
+
+nav {font-family:Helvetica;}
+
+a.email {
+    color: black;
+    text-decoration: none;
+}
+
+a.top:link, a.top:visited {
+    background-color: none; 
+    padding: 14px 25px;
+    border: 2px solid white;
+    color: white;
+    text-align:center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a.top:hover, a.top:active {
+    background-color: rgba(0,0,0,.2);
+    <!-- opacity: 0.2; -->
+}
+
+a.norm:link, a.norm:visited {
+    color: rgb(0,0,255);
+}
+
+a.norm:hover, a.norm:active {
+    color: rgb(0,20,140);
+}
+
+p.mono {
+    font-family: "Lucida Console", Monaco, monospace
+}
+
+p + ul {
+    margin-top: -10px;
+}
+
+p.tab {
+    padding-left:  1em; 
+    padding-right: 1em; 
+}
+
+ul.tab {
+    padding-right: 1em; 
+}
+
+table.content {
+    width:   90%;
+    max-width: 1200px;
+    background-color: #ffffff;
+}
+
+@media print
+{
+.noprint {display:none;}
+table.content {width: 100%;
+               font-size: 10pt;}
+@page { margin: 0; }
+body { margin: 1cm; }
+}

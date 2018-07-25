@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  content="text/html; charset=UTF-8"  http-equiv="content-type">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <!-- <script src="js/jquery-1.8.2.min.js"></script> -->
+    <!-- <script src="js/cufon-yui.js"></script> -->
+    <!-- <script src="js/cufon-replace.js"></script> -->
+    <!-- <script src="js/Myriad_Pro_300.font.js"></script> -->
+    <!-- <script src="js/Myriad_Pro_400.font.js"></script> -->
+    <!-- <script type="text/x-mathjax-config"> -->
+    <!--   MathJax.Hub.Config({tex2jax: {inlineMath: [ ['\\(','\\)']]}}); -->
+    <!-- </script> -->
+    <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> -->
+    <!-- </script> <\!--[if lt IE 9]> -->
+    <!--               <script src="js/ie/IE9.js"></script><script src="js/ie/html5.js"></script><![endif]-\-> -->
+    <title>Overlapping grids - Dan Serino</title>
+  </head>
+  <!-- NAV BAR -->
+  <nav>
+    <table  style="width: 100%"  bgcolor="#b3b3cc" border="0">
+      <tbody>
+        <tr>
+          <td  style="text-align: left; width: 70%;"> <a class="top" href="index.html">Home</a></td>
+          <td  style="text-align: center; width: 10%;"><strong><a class="top" href="projects.html">Projects</a></strong>
+          <td  style="text-align: center; width: 10%;"><a class="top" href="resume.html">Resume</a>
+          <!-- <td  style="text-align: center; width: 10%;"><a class="top" href="cv.html">CV</a> -->
+            <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </nav>
+  <section>
+    <!-- BODY -->
+    <body>
+      <!-- small space -->
+      <table style="width:50%" align="center">
+        <tr>
+          <td style="width:100%">
+            <br>
+          </td>
+        </tr>
+      </table>
+      <!--body content -->
+      <table class="content" align="center">
+	<!-- BEGIN PROJECT -->
+	<tr>
+	  <td style="width:100%">
+	    <h3 style="padding-left:1em;">Overlapping grids</h3>
+            <p class="tab">
+              Overlapping grids are used to efficiently discretize PDEs in 
+              complex geometries. Consider a rectangular geometry with an interior
+              hole. An overlapping grid configuration will look like the following.
+            </p>
+            <figure align="center">
+              <img src="images/overlapping/bgInterp.png"
+		   alt=""
+                   align="center"
+		   height="auto" width="49%">
+              <img src="images/overlapping/intInterp.png"
+		   alt=""
+                   align="center"
+		   height="auto" width="49%">
+            </figure>
+            <p class="tab">
+              There are two grids, a 
+              <span style="color:blue">background grid</span>
+              and a 
+              <span style="color:red">boundary fitted grid</span>.
+              These two grids communicate at interpolation points (squares).
+              On this grid, I am solving the Poisson equation. 
+              For verification purposes, an exact solution is used to test the code.
+            </p>
+            <figure align="center">
+              <img src="images/overlapping/numSol.png"
+		   alt=""
+                   align="center"
+		   height="auto" width="49%">
+              <img src="images/overlapping/numErr.png"
+		   alt=""
+                   align="center"
+		   height="auto" width="49%">
+            </figure>
+            <p class="tab">
+              Since the solver is second-order accurate, 
+              the errors are expected to reduce by a factor of four with each grid doubling,
+              as seen. I also reported timings for each stage of the algorithm. Since 
+              Matlab is used, the longest stage is the assembly of the discretization matrix.
+            </p>
+	    <p style="padding-left:1em;"
+               class="mono">
+              <pre>
+    N   Ndof        err  ratio      tGrid  tAssemble     tSolve     tTotal
+   20    771  1.931e-02         3.567e-01  1.085e-02  2.478e-03  3.700e-01
+   40   2270  4.718e-03   4.09  6.965e-03  3.096e-02  5.751e-03  4.368e-02
+   80   7502  1.168e-03   4.04  1.948e-02  2.101e-01  2.075e-02  2.503e-01
+  160  26882  2.912e-04   4.01  9.540e-02  2.341e+00  8.177e-02  2.518e+00</pre>
+	    </p>
+            <p class="tab">
+              This solver can be used to simulate different applications. Consider 
+              the interior hole to be a heated rod submerged in a fluid. The fluid is cooled
+              and insulated on the outer boundaries. The steady state heat profile will 
+              look like the following.
+            </p>
+            <figure align="center">
+              <img src="images/overlapping/numSolHeat.png"
+		   alt=""
+                   align="center"
+		   height="auto" width="50%">
+            </figure>
+	  </td>
+	</tr>
+      </table>
+      <br><br>
+    </body>
+  </section>
+  <nav align="center">
+    <a href="index.html" class="norm">home</a> - 
+    <a href="projects.html" class="norm">projects</a> - 
+    <a href="resume.html" class="norm">resume</a>
+  </nav>
+  <br>
+</html>
